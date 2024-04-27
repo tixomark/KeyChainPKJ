@@ -5,11 +5,11 @@ import Foundation
 import Security
 
 /// Управление хранилищем ключей в Keychain.
-final class KeyChain {
+final public class KeyChain {
     /// Получает значение по ключу из Keychain.
     /// - Parameter key: Ключ для поиска значения.
     /// - Returns: Значение, ассоциированное с ключом, или `nil`, если значение не найдено.
-    static func getValue(forKey key: String) -> String? {
+    public static func getValue(forKey key: String) -> String? {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key,
@@ -30,7 +30,7 @@ final class KeyChain {
     ///   - key: Ключ, по которому будет сохранено значение.
     /// - Returns: `true`, если сохранение прошло успешно, иначе `false`.
     @discardableResult
-    static func save(_ value: String, forKey key: String) -> Bool {
+    public static func save(_ value: String, forKey key: String) -> Bool {
         let attributes = [
             kSecValueData: value.data(using: .utf8)!,
             kSecAttrAccount: key,
@@ -46,7 +46,7 @@ final class KeyChain {
     ///   - key: Ключ, для которого обновляется значение.
     /// - Returns: `true`, если обновление прошло успешно, иначе `false`.
     @discardableResult
-    static func update(_ value: String, forKey key: String) -> Bool {
+    public static func update(_ value: String, forKey key: String) -> Bool {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key,
@@ -63,7 +63,7 @@ final class KeyChain {
     /// - Parameter key: Ключ, для которого удаляется значение.
     /// - Returns: `true`, если удаление прошло успешно, иначе `false`.
     @discardableResult
-    static func deleteValue(forKey key: String) -> Bool {
+    public static func deleteValue(forKey key: String) -> Bool {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key,
