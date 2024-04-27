@@ -5,7 +5,7 @@ import Foundation
 import Security
 
 /// Управление хранилищем ключей в Keychain.
-public final class KeyChain {
+public struct KeyChain {
     /// Получает значение по ключу из Keychain.
     /// - Parameter key: Ключ для поиска значения.
     /// - Returns: Значение, ассоциированное с ключом, или `nil`, если значение не найдено.
